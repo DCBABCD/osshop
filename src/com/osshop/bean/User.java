@@ -3,6 +3,7 @@ package com.osshop.bean;
 import com.osshop.util.DB;
 import com.osshop.util.MyMD5;
 
+import java.io.UnsupportedEncodingException;
 import java.sql.*;
 
 /**
@@ -39,9 +40,9 @@ public class User {
         return password;
     }
 
-    public void setPassword(String password) {
+    public void setPassword(String password) throws UnsupportedEncodingException {
 
-        this.password = MyMD5.md5(password).toString();
+        this.password = MyMD5.md5(password);
     }
 
     public String getName() {
@@ -70,26 +71,11 @@ public class User {
         this.checkin = checkin;
     }
 
-    public boolean login(String user,String password) throws SQLException{
-        boolean succ=false;
-        Connection con = DB.getConnection();
-        String sql = "select * from where customer where user="+user+"' AND password='"+password+"'";
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery(sql);
-        while(rs.next()){
-            succ=true;
-        }
-        rs.close();
-        stmt.close();
-        con.close();
-        return succ;
-    }
-
-    public boolean add() throws SQLException {
+    public int add() throws SQLException {
         String sql = "insert into user(name,password,tel) values('"+this.name+"','"+this.password+"','"+this.tel+"')";
         Connection con = DB.getConnection();
         Statement stmt = con.createStatement();
-        boolean rs = stmt.execute(sql);
+        int rs = stmt.executeUpdate(sql);
         return rs;
     }
     public void save(){
@@ -101,5 +87,21 @@ public class User {
     public void where(){
 
     }
+    public boolean login(String name,String password) throws UnsupportedEncodingException, SQLException {
+        String username = name;
+        String pwd = MyMD5.md5(password);
+        String sql = "SELECT * FROM user WHERE name='"+name+"' AND password='"+pwd+"'";
+        Connection con = DB.getConnection();
+        Statement stmt = con.createStatement();
 
+        ResultSet rs = stmt.executeQuery(sql);
+        if (rs.next()){
+            this.name = rs.getString("name");
+            this.tel = rs.getString("tel");
+            this.userID = rs.getInt("id");
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

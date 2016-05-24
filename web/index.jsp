@@ -8,9 +8,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title></title>
+    <title>欢迎来到小智零食店</title>
   </head>
   <body>
-
+<h1>小智零食店:),用户:<%=session.getAttribute("name")%></h1>
+  <a href="register.jsp">注册</a>
+  <a href="login.jsp">登陆</a>
   </body>
 </html>

@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class registerServlet extends publicServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf-8");
         String username = request.getParameter("name");
         String password = request.getParameter("password");
         String tel      = request.getParameter("tel");
@@ -37,14 +37,15 @@ public class registerServlet extends publicServlet {
         user.setTel(tel);
 
         try {
-            boolean rs = user.add();
-            if (rs){
-                this.success(request,response,"注册成功!","lo");
+            int rs = user.add();
+            if (rs>0){
+                this.success(request,response,"注册成功!","login.jsp");
             }else{
-
+                this.error(request,response,"注册失败","register.jsp");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            this.error(request,response,"数据库写入失败!","register.jsp");
+            //e.printStackTrace();
         }
 
     }
@@ -52,5 +53,5 @@ public class registerServlet extends publicServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //非post访问将转发到注册的视图中
         request.getRequestDispatcher("register.jsp").forward(request,response);
-    }   
+    }
 }

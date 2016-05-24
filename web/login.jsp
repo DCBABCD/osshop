@@ -11,8 +11,9 @@
     <title>oshop,欢迎登陆!</title>
 </head>
 <body>
+
 <h2>欢迎登陆</h2>
-<form action="loginServlet">
+<form action="loginServlet" method="post">
     name:<input name="name" /><br>
     password:<input name="password"><br>
     <input type="submit" value="提交">

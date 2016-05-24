@@ -1,5 +1,6 @@
 package com.osshop.util;
 
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 
 /**
@@ -11,18 +12,19 @@ public class MyMD5 {
      * @param String 原始的SPKEY
      * @return byte[] 指定加密方式为md5后的byte[]
      */
-    public static byte[] md5(String strSrc)
-    {
+    public static String md5(String strSrc){
         byte[] returnByte = null;
         try
         {
-            MessageDigest md5 = MessageDigest.getInstance("MyMD5");
-            returnByte = md5.digest(strSrc.getBytes("GBK"));
+            MessageDigest md5 = MessageDigest.getInstance("MD5");
+            returnByte = md5.digest(strSrc.getBytes());
+
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        return returnByte;
+        return strSrc;//String(returnByte);
     }
+
 }
