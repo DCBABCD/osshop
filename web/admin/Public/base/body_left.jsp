@@ -29,7 +29,7 @@
 
                     <ul class="submenu">
                         <li>
-                            <a href="__MODULE__/{$vo.url}">
+                            <a href="<%=basePath %>admin/index/user_list.jsp">
                                 <i class="icon-double-angle-right"></i>
                                 <span class="url-title">用户列表</span>
                             </a>
@@ -47,13 +47,13 @@
 
                     <ul class="submenu">
                         <li>
-                            <a href="__MODULE__/{$vo.url}">
+                            <a href="<%=basePath %>admin/product/list.do">
                                 <i class="icon-double-angle-right"></i>
                                 <span class="url-title">商品列表</span>
                             </a>
                         </li>
                         <li>
-                            <a href="__MODULE__/{$vo.url}">
+                            <a href="<%=basePath %>admin/product/product_add.jsp">
                                 <i class="icon-double-angle-right"></i>
                                 <span class="url-title">添加商品</span>
                             </a>
@@ -71,7 +71,7 @@
 
                     <ul class="submenu">
                         <li>
-                            <a href="__MODULE__/{$vo.url}">
+                            <a href="<%=basePath %>admin/order/order_list.jsp">
                                 <i class="icon-double-angle-right"></i>
                                 <span class="url-title">订单列表</span>
                             </a>

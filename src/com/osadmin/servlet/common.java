@@ -12,6 +12,7 @@ import java.io.IOException;
  */
 @WebServlet(name = "common")
 public class common extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -33,7 +34,7 @@ public class common extends HttpServlet {
     public void success(HttpServletRequest request, HttpServletResponse response,String message,String url)  throws ServletException, IOException {
         request.setAttribute("url",url);
         request.setAttribute("message",message);
-        request.getRequestDispatcher("../success.jsp").forward(request,response);
+        request.getRequestDispatcher("/success.jsp").forward(request,response);
     }
 
     /**
@@ -48,6 +49,6 @@ public class common extends HttpServlet {
     public void error(HttpServletRequest request, HttpServletResponse response,String message,String url)  throws ServletException, IOException {
         request.setAttribute("url",url);
         request.setAttribute("message",message);
-        request.getRequestDispatcher("../error.jsp").forward(request,response);
+        request.getRequestDispatcher("/error.jsp").forward(request,response);
     }
 }
