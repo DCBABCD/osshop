@@ -9,7 +9,9 @@
 <%@include file="../Public/base/header.jsp"%>
 <%@include file="../Public/base/body_top.jsp"%>
 <%@include file="../Public/base/body_left.jsp"%>
-
+<%
+LI
+%>
 
         <div class="main-content">
             <div class="breadcrumbs" id="breadcrumbs">

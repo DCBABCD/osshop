@@ -51,7 +51,7 @@ public class add extends common {
             FileItem item = (FileItem) iter.next();
             if (item.isFormField()) {  // 如果是表单域 ，就是非文件上传元素
                 String name = new String(item.getFieldName().getBytes("ISO8859_1"),"utf-8");//item.getFieldName(); // 获取name属性的值
-                String value = item.getString("utf-8"); // 获取value属性的值
+                String value = item.getString(); // 获取value属性的值
                 //System.out.println(value+"yeah");
                 if (name.equals("name")) {
                      product_name = value;
@@ -68,7 +68,7 @@ public class add extends common {
                 if (name.equals("num")) {
                     product_num = value;
                 }
-                if (name.equals("detail")) {
+                if (item.getFieldName().equals("detail")) {
                     product_detail = value;
                 }
             } else {
@@ -123,7 +123,7 @@ public class add extends common {
             e.printStackTrace();
         }
         if (flag>0){
-            this.success(request,response,"商品添加成功!","/admin/product/list.do");
+            this.success(request,response,"商品添加成功!","/admin/product/product_list.jsp");
         }else{
             this.error(request,response,"商品添加失败!","/admin/product/product_add.jsp");
         }

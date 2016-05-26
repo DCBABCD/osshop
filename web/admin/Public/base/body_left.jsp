@@ -29,7 +29,7 @@
 
                     <ul class="submenu">
                         <li>
-                            <a href="<%=basePath %>admin/index/user_list.jsp">
+                            <a href="<%=basePath %>admin/user/list.do">
                                 <i class="icon-double-angle-right"></i>
                                 <span class="url-title">用户列表</span>
                             </a>

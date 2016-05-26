@@ -14,7 +14,7 @@ import java.util.List;
  * Created by RandolfJay on 16/5/25.
  */
 public class product {
-    private int productID;
+    private int productID = 0;
     private String name;
     private String price;
     private String color;
@@ -126,6 +126,30 @@ public class product {
         return flag;
     }
 
+    public int save() throws SQLException {
+        int flag = 0;
+        Connection con = DB.getConnection();
+        Statement stmt = con.createStatement();
+        String sql = "UPDATE product SET name='"+this.name+"',price='"+this.price+"',color='"+this.color+"'" +
+                ",size='"+this.size+"',num='"+this.num+"',detail='"+this.detail+"',image_01='"+this.image_01+"'," +
+                "image_02='"+this.image_02+"',image_03='"+this.image_03+"',image_04='"+this.image_04+"' WHERE id='"+this.productID+"'";
+        System.out.println(sql);
+        con.prepareStatement(sql);
+        flag = stmt.executeUpdate(sql);
+        return flag;
+    }
+
+    public int delete(String productID) throws SQLException {
+        int flag = 0;
+        Connection con = DB.getConnection();
+        Statement stmt = con.createStatement();
+        String sql = "DELETE FROM product WHERE id='"+productID+"'";
+        System.out.println(sql);
+        con.prepareStatement(sql);
+        flag = stmt.executeUpdate(sql);
+        return flag;
+    }
+
     /**
      * 查询所有的商品
      * @return  list 商品
@@ -147,5 +171,29 @@ public class product {
         }
         return list;
     }
+
+    public product getProductByID(String productID) throws SQLException {
+        product pu = new product();
+        Connection con = DB.getConnection();
+        Statement stmt = con.createStatement();
+        String sql = "SELECT * FROM product WHERE id='"+productID+"'";
+        ResultSet rs = stmt.executeQuery(sql);
+        System.out.println(sql);
+        while (rs.next()){
+            pu.productID = rs.getInt("id");
+            pu.name = rs.getString("name");
+            pu.price = rs.getString("price");
+            pu.color = rs.getString("color");
+            pu.size = rs.getString("size");
+            pu.num = rs.getString("num");
+            pu.detail = EncodeDecodeUtil.htmlDecode(rs.getString("detail"));
+            pu.image_01 = rs.getString("image_01");
+            pu.image_02 = rs.getString("image_02");
+            pu.image_03 = rs.getString("image_03");
+            pu.image_04 = rs.getString("image_04");
+        }
+        return pu;
+    }
+
 
 }

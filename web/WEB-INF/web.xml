@@ -51,6 +51,43 @@
         <servlet-name>product_add</servlet-name>
         <url-pattern>/admin/product/add.do</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>product_edit</servlet-name>
+        <servlet-class>com.osadmin.servlet.product.edit</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>product_edit</servlet-name>
+        <url-pattern>/admin/product/edit.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>product_delete</servlet-name>
+        <servlet-class>com.osadmin.servlet.product.delete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>product_delete</servlet-name>
+        <url-pattern>/admin/product/delete.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user_list</servlet-name>
+        <servlet-class>com.osadmin.servlet.user.list</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_list</servlet-name>
+        <url-pattern>/admin/user/list.do</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>user_edit</servlet-name>
+        <servlet-class>com.osadmin.servlet.user.edit</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>user_edit</servlet-name>
+        <url-pattern>/admin/user/edit.do</url-pattern>
+    </servlet-mapping>
+
     <!--图片上传servlet配资 start-->
     <servlet>
     <servlet-name>SimpleUploader</servlet-name>
@@ -96,9 +133,9 @@
         <load-on-startup>0</load-on-startup>
     </servlet>
 
-<servlet-mapping>
-<servlet-name>SimpleUploader</servlet-name>
-<url-pattern>/ckeditor/uploader</url-pattern>
-</servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>SimpleUploader</servlet-name>
+    <url-pattern>/ckeditor/uploader</url-pattern>
+    </servlet-mapping>
         <!--图片上传servlet配资 end-->
 </web-app>
